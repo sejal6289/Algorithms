@@ -57,6 +57,29 @@ public class MergeSort {
 		}
 		System.out.println("");
 	}
+	
+	//Merge sorted arrays - arrayA and arrayB
+	//You are given 2 sorted arrays, A and B..where A has a large enough buffer at the end to hold B. Write a method to merge ArrayB into A in sorted order. 
+	
+	public static void merge(int a[], int b[],int countA,int countB) {
+		
+		
+		int indexMerged = countA + countB - 1;
+		int indexA = countA - 1;
+		int indexB = countB - 1;
+		
+		while(indexB >= 0) {
+			if(indexA >= 0 && b[indexB] < a[indexA]) {
+				a[indexMerged] = a[indexA];
+				indexA--;
+			} else {
+				a[indexMerged] = b[indexB];
+				indexB--;
+			}
+			indexMerged--;
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -65,6 +88,22 @@ public class MergeSort {
 		MergeSort.printArr(array);
 		MergeSort.mergeSort(array);
 		MergeSort.printArr(array);
+		
+		System.out.println("2 Sorted arrays : ");
+		int[] arrayA = new int[8]; 
+		arrayA[0] = 10;
+		arrayA[1] = 20;
+		arrayA[2] = 30;
+		arrayA[3] = 50;
+		int[] arrayB = {21,25,52,55};
+		MergeSort.printArr(arrayA);
+		MergeSort.printArr(arrayB);
+		
+		MergeSort.merge(arrayA,arrayB,4,4);
+		
+		MergeSort.printArr(arrayA);
+		
+		
 	}
 
 }
